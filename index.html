@@ -1,4 +1,4 @@
-<!DOCTY
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -67,16 +67,16 @@
   </div>
 
   <div class="form-container">
-    <input type="text" id="food1" placeholder="今の気分（例: 寿司）">
-    <input type="text" id="food2" placeholder="好きな食べ物（例: 焼肉）">
+    <input type="text" id="food1" placeholder="好きな食べ物">
+    <input type="text" id="food2" placeholder="ブロスタ好きなキャラ">
     <button onclick="checkAnswers()">送信</button>
     <div id="error-msg"></div>
   </div>
 
   <script>
-    // ★ここを好きな答えに変えられます
-    const CORRECT_FOOD1 = "寿司";
-    const CORRECT_FOOD2 = "焼肉";
+    // 正解の設定（「肉」と「ピアス」）
+    const CORRECT_FOOD1 = "肉";
+    const CORRECT_FOOD2 = "ピアス";
 
     function checkAnswers() {
       const input1 = document.getElementById('food1').value.trim();
