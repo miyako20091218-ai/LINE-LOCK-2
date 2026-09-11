@@ -1,0 +1,101 @@
+<!DOCTY
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>システムエラー</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      user-select: none;
+    }
+    .icon { font-size: 50px; margin-bottom: 15px; }
+    .title { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+    .message { font-size: 13px; color: #aaaaaa; padding: 0 30px; line-height: 1.5; margin-bottom: 20px; }
+    
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    input {
+      background-color: #222;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 15px;
+      text-align: center;
+      width: 200px;
+      outline: none;
+    }
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    button:active { background-color: #555; }
+    #error-msg {
+      color: #ff5555;
+      font-size: 12px;
+      margin-top: 5px;
+      height: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="icon">⚠️</div>
+  <div class="title">LINEを起動できません</div>
+  <div class="message">
+    本人確認のため質問に答えてください。
+  </div>
+
+  <div class="form-container">
+    <input type="text" id="food1" placeholder="今の気分（例: 寿司）">
+    <input type="text" id="food2" placeholder="好きな食べ物（例: 焼肉）">
+    <button onclick="checkAnswers()">送信</button>
+    <div id="error-msg"></div>
+  </div>
+
+  <script>
+    // ★ここを好きな答えに変えられます
+    const CORRECT_FOOD1 = "寿司";
+    const CORRECT_FOOD2 = "焼肉";
+
+    function checkAnswers() {
+      const input1 = document.getElementById('food1').value.trim();
+      const input2 = document.getElementById('food2').value.trim();
+      const errorDiv = document.getElementById('error-msg');
+
+      if (input1 === CORRECT_FOOD1 && input2 === CORRECT_FOOD2) {
+        errorDiv.style.color = "#55ff55";
+        errorDiv.innerText = "正解！LINEを開きます...";
+        setTimeout(() => {
+          window.location.href = "line://";
+        }, 500);
+      } else {
+        errorDiv.style.color = "#ff5555";
+        errorDiv.innerText = "答えが違います";
+        document.getElementById('food1').value = "";
+        document.getElementById('food2').value = "";
+      }
+    }
+  </script>
+</body>
+</html>
